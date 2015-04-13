@@ -1,0 +1,21 @@
+﻿<Window x:Class="WpfTabsSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"
+        b:Binder.Model="MainViewModel"
+        Title="{Binding Name}" Height="350" Width="525">
+    <Grid>
+        <TabControl x:Name="MyTabs" b:Binder.Bind="Tabs:Items">
+            <!--<TabItem>
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Tab"/>
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+            </TabItem>-->
+        </TabControl>
+    </Grid>
+</Window>

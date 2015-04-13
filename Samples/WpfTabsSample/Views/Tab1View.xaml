@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WpfTabsSample.Views.Tab1View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"
+        mc:Ignorable="d" 
+        >
+    
+    <StackPanel Orientation="Vertical">
+        <TextBlock b:Binder.Bind="$this;PostCode" Margin="5"/>
+        <TextBlock b:Binder.Bind="$this;SelectedItem" Margin="5"/>
+
+        <TextBox Name="PostCode" b:Binder.Bind="$this" Margin="5"/>
+        
+        <TreeView Height="100" b:Binder.Bind="ItemsSource:Items;SelectedItem:SelectedTreeItem" Margin="5">
+            
+        </TreeView>
+        
+        <ListView b:Binder.Bind="$this;SelectedItem:SelectedItem;Items:Items" Margin="5"/>
+
+        <CheckBox x:Name="CanCheckPostCode" Content="Can Submit Postcode" Margin="5"/>
+        
+        <Button Name="CheckPostCode" Content="Submit PostCode" b:Binder.Bind="$this" Width="100" Margin="5"/>
+        
+        <Button Name="AddItemAction" b:Binder.Bind="$this"  Content="Add Item" Width="100" Margin="5" />
+        
+        <Label>
+            <Hyperlink b:Binder.Action="Click:HelpAction">
+                <Label Content="Help"/>
+            </Hyperlink>
+        </Label>
+    </StackPanel>
+    
+</UserControl>

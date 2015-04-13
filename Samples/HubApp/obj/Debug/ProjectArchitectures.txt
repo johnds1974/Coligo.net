@@ -1,0 +1,4 @@
+C:\Users\Joao\Documents\Dev\csharp\WPF\Coligo.net\Samples\HubApp\HubApp.csproj;neutral
+C:\Users\Joao\Documents\Dev\csharp\WPF\Coligo.net\Src\Coligo.Core\Coligo.Core.csproj;neutral
+C:\Users\Joao\Documents\Dev\csharp\WPF\Coligo.net\Src\Coligo.Core\Coligo.Core.csproj;neutral
+C:\Users\Joao\Documents\Dev\csharp\WPF\Coligo.net\Src\Coligo.Platform\Coligo.Platform.WP81.csproj;neutral
