@@ -16,6 +16,10 @@ it's own XAML markup mechanism.
 Now, since Coligo is only in it's earliest stages, there will of course be many changes (hopefully improvements) to the way
 it functions, but so far it has done a pretty good job at solving some of the issues I came across with Caliburn.
 
+For now, the Coligo assemblies have been developed to be used in both a <b>Desktop WPF</b> environment and a <b>WinRT</b> environment, so 
+in the case of a Windows Store application or a Windows Phone 8+ application, the libraries have beed developed to utilise
+the WinRT BCL, which annoyingly, differs quite alot from the regular non-WinRT BCL!
+
 Please keep tuned in formore updates, I am just writing this quickly to have some form of README in place.
 
-Mode documentation and samples to come soon!
+<b>More documentation and samples to come soon!</b>
