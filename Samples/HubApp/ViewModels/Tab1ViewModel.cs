@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Coligo.Core;
+using Coligo.Platform;
 
 namespace HubApp.ViewModels
 {

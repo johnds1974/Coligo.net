@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Coligo.Core;
 using HubApp.Services;
+using Coligo.Platform;
 
 namespace HubApp.ViewModels
 {

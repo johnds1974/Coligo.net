@@ -4,7 +4,7 @@
         xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"
         xmlns:views="clr-namespace:WpfTabsSample.Views"
         b:Binder.Model="MainViewModel"
-        Title="{Binding Name}" Height="350" Width="525">
+        Title="{Binding Name}" Height="500" Width="400">
     <Grid>
         <TabControl x:Name="MyTabs">
             

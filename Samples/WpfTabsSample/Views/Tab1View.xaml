@@ -8,8 +8,8 @@
         >
     
     <StackPanel Orientation="Vertical">
-        <TextBlock b:Binder.Bind="$this;PostCode" Margin="5"/>
-        <TextBlock b:Binder.Bind="$this;SelectedItem" Margin="5"/>
+        <TextBlock b:Binder.Bind="$this:PostCode" Margin="5"/>
+        <TextBlock b:Binder.Bind="$this:SelectedItem" Margin="5"/>
 
         <TextBox Name="PostCode" b:Binder.Bind="$this" Margin="5"/>
         
