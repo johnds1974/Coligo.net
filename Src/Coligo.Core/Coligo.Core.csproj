@@ -56,7 +56,6 @@
     <Folder Include="Logger\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseViewModel.cs" />
     <Compile Include="ColigoEngine.cs" />
     <Compile Include="IIocContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

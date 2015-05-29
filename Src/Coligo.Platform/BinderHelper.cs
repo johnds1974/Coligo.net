@@ -120,7 +120,7 @@ namespace Coligo.Platform.Binder
             {
                 if (element.DataContext != null)
                 {
-                    var items = statement.Split(new[] { ':' });
+                    BindElementStatement(element, statement);
                 }
                 else
                 {
@@ -323,7 +323,7 @@ namespace Coligo.Platform.Binder
                 if (!keyIsThis)
                 {
                     var depprop = targetElement.GetDependencyProperty(key);
-                    if (depprop != null)
+                    if (depprop != null && !depprop.ReadOnly)
                     {
                         // Ok, now make a Binding to the VM prop...
                         BindingOperations.SetBinding(targetElement, depprop, new Binding

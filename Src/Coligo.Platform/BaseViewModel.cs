@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Controls;
 using Coligo.Platform.Binder;
 #endif
 
-namespace Binder
+namespace Coligo.Platform
 {
     /// <summary>
     /// 
@@ -18,6 +18,14 @@ namespace Binder
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void Refresh()
+        {
+            OnPropertyChanged(string.Empty);
+        }
 
         /// <summary>
         /// 
