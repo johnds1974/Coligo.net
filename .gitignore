@@ -1,5 +1,2 @@
-bin/
-obj/
-*.dll
-*.pdb
-*.exe
+[Ss]rc/**/[Bb]in/
+[Ss]amples/**/[Bb]in/
