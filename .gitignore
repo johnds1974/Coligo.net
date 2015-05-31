@@ -1,2 +1,4 @@
-[Ss]rc/**/[Bb]in/
-[Ss]amples/**/[Bb]in/
+[Ss]rc/**/[Bb]in/*
+[Ss]rc/**/[Oo]bj/*
+[Ss]amples/**/[Bb]in/*
+[Ss]amples/**/[Oo]bj/*
