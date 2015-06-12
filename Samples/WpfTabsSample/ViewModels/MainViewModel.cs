@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Coligo.Platform.Binder;
 using Coligo.Core;
+using Coligo.Platform;
 
 namespace WpfTabsSample.ViewModels
 {

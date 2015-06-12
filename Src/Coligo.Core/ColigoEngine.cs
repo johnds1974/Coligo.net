@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Coligo.Core
 {
     public static class ColigoEngine
     {
         static bool _initialized;
+        private static SynchronizationContext _syncContext;
 
         /// <summary>
         /// 
         /// </summary>
         public static IIocContainer Container { get; set; }
+
+        /// <summary>
+        /// Returns the captured SynchronisationContext which was capetured when Initialize(...) was called.
+        /// </summary>
+        public static SynchronizationContext SyncContext
+        {
+            get
+            {
+                return _syncContext;
+            }
+        }
 
         /// <summary>
         /// 
@@ -24,6 +37,8 @@ namespace Coligo.Core
                 //@todo: log this!
                 return;
             }
+
+            _syncContext = SynchronizationContext.Current;
 
             Container = container;
 

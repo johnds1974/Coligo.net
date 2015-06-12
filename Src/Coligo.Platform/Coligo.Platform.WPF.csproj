@@ -62,13 +62,13 @@
     <Compile Include="ViewHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Coligo.Core\Coligo.Core.csproj">
       <Project>{e12e001c-ca12-42a3-883c-e1f7e6413de2}</Project>
       <Name>Coligo.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

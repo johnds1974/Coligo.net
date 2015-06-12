@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Coligo.Core;
+using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows;
 
 #if WINDOWS_PHONE_APP
@@ -86,6 +88,20 @@ namespace Coligo.Platform
             }
         }
 #endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="state"></param>
+        protected void OnUIThread(Action<object> action, object state)
+        {
+            if (ColigoEngine.SyncContext != null)
+            {
+//                SendOrPostCallback callback = s => action(s);
+                ColigoEngine.SyncContext.Send(s => action(s), state);
+            }
+        }
 
     }
 }

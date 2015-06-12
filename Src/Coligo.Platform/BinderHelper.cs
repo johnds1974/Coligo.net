@@ -323,6 +323,7 @@ namespace Coligo.Platform.Binder
                 if (!keyIsThis)
                 {
                     var depprop = targetElement.GetDependencyProperty(key);
+#if !WINDOWS_PHONE_APP
                     if (depprop != null && !depprop.ReadOnly)
                     {
                         // Ok, now make a Binding to the VM prop...
@@ -331,6 +332,7 @@ namespace Coligo.Platform.Binder
                             Path = new PropertyPath(keyValue),
                         });
                     }
+#endif
                 }
 
                 if (targetElement is Control)
