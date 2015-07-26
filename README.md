@@ -59,14 +59,14 @@ of the tab in the VisualStudio designer at design time.
 <window x:class="WpfTabsSample.MainWindow"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	**xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"**
+	xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"
 	xmlns:views="clr-namespace:WpfTabsSample.Views"
-	**b:Binder.Model="MainViewModel"**
+	b:Binder.Model="MainViewModel"
 	title="{Binding Name}" height="400" width="400">
     <Grid>
 	<TabControl x:name="MyTabs">
 
-	    <TabItem header="{Binding Name}" **b:Binder.Model="Tab1ViewModel"**>
+	    <TabItem header="{Binding Name}" b:Binder.Model="Tab1ViewModel">
 		<views:tab1view />
 	    </TabItem>
 
@@ -103,7 +103,7 @@ using Coligo.Platform;
 
 namespace WpfTabsSample.ViewModels
 {
-    public class MainViewModel : <strong>BaseViewModel</strong>
+    public class MainViewModel : BaseViewModel
     {
 
 	/// <summary>
@@ -126,20 +126,20 @@ namespace WpfTabsSample.ViewModels
 	     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	     **xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"**
+	     xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"
 	     mc:ignorable="d">
 
     <StackPanel orientation="Vertical">
-	<TextBlock **b:Binder.Bind="$this:PostCode"** margin="5" />
-	<TextBlock **b:Binder.Bind="$this:SelectedItem"** margin="5" />
+	<TextBlock b:Binder.Bind="$this:PostCode" margin="5" />
+	<TextBlock b:Binder.Bind="$this:SelectedItem" margin="5" />
 
-	<TextBox **Name="PostCode"** **b:Binder.Bind="$this"** margin="5" />
+	<TextBox Name="PostCode" b:Binder.Bind="$this" margin="5" />
 
-	<TreeView height="100" **b:Binder.Bind="ItemsSource:Items;SelectedItem:SelectedTreeItem"** margin="5">
+	<TreeView height="100" b:Binder.Bind="ItemsSource:Items;SelectedItem:SelectedTreeItem" margin="5">
 
 	</TreeView>
 
-	<ListView **b:Binder.Bind="$this;SelectedItem:SelectedItem;Items:Items"** margin="5" />
+	<ListView b:Binder.Bind="$this;SelectedItem:SelectedItem;Items:Items" margin="5" />
 
 	<CheckBox x:Name="CanCheckPostCode" Content="Can Submit Postcode" margin="5" />
 
@@ -148,7 +148,7 @@ namespace WpfTabsSample.ViewModels
 	<Button Name="AddItemAction" b:Binder.Bind="$this" Content="Add Item" width="100" margin="5" />
 
 	<Label>
-	    <Hyperlink **b:Binder.Action="Click:HelpAction"**>
+	    <Hyperlink b:Binder.Action="Click:HelpAction">
 		<Label Content="Help" />
 	    </Hyperlink>
 	</Label>
@@ -157,15 +157,18 @@ namespace WpfTabsSample.ViewModels
 </UserControl>
 ```
 
-Use of **Binder**...
+Use of **Binder**:
 
 To hook-up a ViewModel class with an entire UI Element:
+
 **b:Binder.Model="name-of-your-viewmodel-class"**
 
 To bind a UI Element with implicit conventions, or to bind UI Element properties to ViewModel properties:
+
 **b:Binder.Bind="([$this]|[$this:vm-property-name]|[ui-element-property:vm-property]);"**
 
 To bind UI Element **events** to ViewModel 'Actions', or methods:
+
 **b:Binder.Action="ui-event-name:vm-void-method"**
 
 
