@@ -6,7 +6,11 @@ namespace WpfTabsSample.ViewModels
 {
     public class Tab1ViewModel : BaseViewModel
     {
+        private string _postCode;
+        private bool _canCheckPostCode;
         private ObservableCollection<string> _items;
+        private string _selectedItem;
+        private string _selectedTreeItem;
 
         public Tab1ViewModel()
         {
@@ -29,10 +33,6 @@ namespace WpfTabsSample.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        private string _postCode;
-
-        private bool _canCheckPostCode;
-
         public string PostCode
         {
             get { return _postCode; }
@@ -44,6 +44,9 @@ namespace WpfTabsSample.ViewModels
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool CanCheckPostCode
         {
             get
@@ -57,6 +60,9 @@ namespace WpfTabsSample.ViewModels
             //}
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsVisibleCheckPostCode
         {
             get 
@@ -77,7 +83,9 @@ namespace WpfTabsSample.ViewModels
             }
         }
 
-        string _selectedItem;
+        /// <summary>
+        /// 
+        /// </summary>
         public string SelectedItem
         {
             get
@@ -91,7 +99,9 @@ namespace WpfTabsSample.ViewModels
             }
         }
 
-        string _selectedTreeItem;
+        /// <summary>
+        /// 
+        /// </summary>
         public string SelectedTreeItem
         {
             get
@@ -108,7 +118,6 @@ namespace WpfTabsSample.ViewModels
 
         public void CheckPostCode()
         {
-            
         }
 
         public void AddItemAction()
@@ -118,7 +127,7 @@ namespace WpfTabsSample.ViewModels
 
         public void HelpAction()
         {
-
         }
+
     }
 }

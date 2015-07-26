@@ -18,9 +18,12 @@ namespace WpfTabsSample.ViewModels
             _tabs.Add(typeof(Tab2ViewModel));
         }
 
+        /// <summary>
+        /// Public property
+        /// </summary>
         public string Name
         {
-            get { return "John"; }
+            get { return "Your MainWindow"; }
         }
 
         private IList<Type> _tabs;
