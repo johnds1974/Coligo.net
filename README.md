@@ -55,27 +55,27 @@ Below is an example MainWindow.xaml file, which is in a <b>Views</b> folder in a
 main UI component, with 2 Tabs, each tab refers to 2 other XAML files, which a <b>UserControls</b> that is required if you want be able to <b>see</b> the content
 of the tab in the VisualStudio designer at design time.
 
-<window x:class="WpfTabsSample.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        <b>xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"</b>
-        xmlns:views="clr-namespace:WpfTabsSample.Views"
-        <b>b:Binder.Model="MainViewModel"</b>
-        title="{Binding Name}" height="400" width="400">
-    <Grid>
-        <TabControl x:name="MyTabs">
+	<window x:class="WpfTabsSample.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		<b>xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"</b>
+		xmlns:views="clr-namespace:WpfTabsSample.Views"
+		<b>b:Binder.Model="MainViewModel"</b>
+		title="{Binding Name}" height="400" width="400">
+	    <Grid>
+		<TabControl x:name="MyTabs">
 
-            <TabItem header="{Binding Name}"<b>b:Binder.Model="Tab1ViewModel"</b>>
-                <views:tab1view />
-            </TabItem>
+		    <TabItem header="{Binding Name}"<b>b:Binder.Model="Tab1ViewModel"</b>>
+			<views:tab1view />
+		    </TabItem>
 
-            <TabItem header="{Binding Name}" b:Binder.Model="Tab2ViewModel">
-                <views:tab2view />
-            </TabItem>
+		    <TabItem header="{Binding Name}" b:Binder.Model="Tab2ViewModel">
+			<views:tab2view />
+		    </TabItem>
 
-        </TabControl>
-    </Grid>
-</Window>
+		</TabControl>
+	    </Grid>
+	</Window>
 
 Notice <b>xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"</b> and <b>b:Binder.Model="MainViewModel"</b>.
 The first sets up the xaml-namespace to the required Coligo namespace and assembly. If this were a WindowsPhome 8.1 project, the assembly
@@ -90,67 +90,67 @@ Also notice that you can mix standard xaml binding statements (<b>header="{Bindi
 
 <b>Here is MainViewModel.cs (very simple example):</b>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Coligo.Platform.Binder;
-using Coligo.Core;
-using Coligo.Platform;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+	using Coligo.Platform.Binder;
+	using Coligo.Core;
+	using Coligo.Platform;
 
-namespace WpfTabsSample.ViewModels
-{
-    public class MainViewModel : BaseViewModel
-    {
+	namespace WpfTabsSample.ViewModels
+	{
+	    public class MainViewModel : BaseViewModel
+	    {
 
-        /// <summary>
-        /// Public property
-        /// </summary>
-        public string Name
-        {
-            get { return "Your MainWindow"; }
-        }
+		/// <summary>
+		/// Public property
+		/// </summary>
+		public string Name
+		{
+		    get { return "Your MainWindow"; }
+		}
 
-    }
-}
+	    }
+	}
 
 
 <b>Tab1View.xaml</b>:
 
-<UserControl x:class="WpfTabsSample.Views.Tab1View"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             <b>xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"</b>
-             mc:ignorable="d">
+	<UserControl x:class="WpfTabsSample.Views.Tab1View"
+		     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		     <b>xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"</b>
+		     mc:ignorable="d">
 
-    <StackPanel orientation="Vertical">
-        <TextBlock <b>b:Binder.Bind="$this:PostCode"</b> margin="5" />
-        <TextBlock <b>b:Binder.Bind="$this:SelectedItem"</b> margin="5" />
+	    <StackPanel orientation="Vertical">
+		<TextBlock <b>b:Binder.Bind="$this:PostCode"</b> margin="5" />
+		<TextBlock <b>b:Binder.Bind="$this:SelectedItem"</b> margin="5" />
 
-        <TextBox <b>Name="PostCode"</b> <b>b:Binder.Bind="$this"</b> margin="5" />
+		<TextBox <b>Name="PostCode"</b> <b>b:Binder.Bind="$this"</b> margin="5" />
 
-        <TreeView height="100" <b>b:Binder.Bind="ItemsSource:Items;SelectedItem:SelectedTreeItem"</b> margin="5">
+		<TreeView height="100" <b>b:Binder.Bind="ItemsSource:Items;SelectedItem:SelectedTreeItem"</b> margin="5">
 
-        </TreeView>
+		</TreeView>
 
-        <ListView <b>b:Binder.Bind="$this;SelectedItem:SelectedItem;Items:Items"</b> margin="5" />
+		<ListView <b>b:Binder.Bind="$this;SelectedItem:SelectedItem;Items:Items"</b> margin="5" />
 
-        <CheckBox x:Name="CanCheckPostCode" Content="Can Submit Postcode" margin="5" />
+		<CheckBox x:Name="CanCheckPostCode" Content="Can Submit Postcode" margin="5" />
 
-        <Button Name="CheckPostCode" Content="Submit PostCode" b:Binder.Bind="$this" width="100" margin="5" />
+		<Button Name="CheckPostCode" Content="Submit PostCode" b:Binder.Bind="$this" width="100" margin="5" />
 
-        <Button Name="AddItemAction" b:Binder.Bind="$this" Content="Add Item" width="100" margin="5" />
+		<Button Name="AddItemAction" b:Binder.Bind="$this" Content="Add Item" width="100" margin="5" />
 
-        <Label>
-            <Hyperlink <b>b:Binder.Action="Click:HelpAction"</b>>
-                <Label Content="Help" />
-            </Hyperlink>
-        </Label>
-    </StackPanel>
+		<Label>
+		    <Hyperlink <b>b:Binder.Action="Click:HelpAction"</b>>
+			<Label Content="Help" />
+		    </Hyperlink>
+		</Label>
+	    </StackPanel>
 
-</UserControl>
+	</UserControl>
 
 Use of <b>Binder</b>...
 
