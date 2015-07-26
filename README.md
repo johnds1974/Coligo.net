@@ -92,30 +92,31 @@ Also notice that you can mix standard xaml binding statements (**header="{Bindin
 
 **Here is MainViewModel.cs (very simple example):**
 
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-	using Coligo.Platform.Binder;
-	using Coligo.Core;
-	using Coligo.Platform;
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Coligo.Platform.Binder;
+using Coligo.Core;
+using Coligo.Platform;
 
-	namespace WpfTabsSample.ViewModels
+namespace WpfTabsSample.ViewModels
+{
+    public class MainViewModel : <strong>BaseViewModel</strong>
+    {
+
+	/// <summary>
+	/// Public property
+	/// </summary>
+	public string Name
 	{
-	    public class MainViewModel : **BaseViewModel**
-	    {
-
-		/// <summary>
-		/// Public property
-		/// </summary>
-		public string Name
-		{
-		    get { return "Your MainWindow"; }
-		}
-
-	    }
+	    get { return "Your MainWindow"; }
 	}
 
+    }
+}
+```
 
 **Tab1View.xaml**
 
