@@ -154,14 +154,14 @@ Also notice that you can mix standard xaml binding statements (**header="{Bindin
 
 Use of **Binder**...
 
-To hook-up a ViewModel class with an entire UI Element...
-**b:Binder.Model="name-of-your-viewmodel-class"**
+To hook-up a ViewModel class with an entire UI Element:
+...**b:Binder.Model="name-of-your-viewmodel-class"**
 
-To bind a UI Element with implicit conventions, or to bind UI Element properties to ViewModel properties...
-**b:Binder.Bind="([$this]|[$this:vm-property-name]|[ui-element-property:vm-property]);"**
+To bind a UI Element with implicit conventions, or to bind UI Element properties to ViewModel properties:
+...**b:Binder.Bind="([$this]|[$this:vm-property-name]|[ui-element-property:vm-property]);"**
 
-To bind UI Element **events** to ViewModel 'Actions', or methods...
-**b:Binder.Action="ui-event-name:vm-void-method"**
+To bind UI Element **events** to ViewModel 'Actions', or methods:
+...**b:Binder.Action="ui-event-name:vm-void-method"**
 
 
 **More documentation and samples to come soon!**
