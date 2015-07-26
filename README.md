@@ -55,27 +55,29 @@ Below is an example MainWindow.xaml file, which is in a **Views** folder in a Wi
 main UI component, with 2 Tabs, each tab refers to 2 other XAML files, which a **UserControls** that is required if you want be able to **see** the content
 of the tab in the VisualStudio designer at design time.
 
-	<window x:class="WpfTabsSample.MainWindow"
-		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		**xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"**
-		xmlns:views="clr-namespace:WpfTabsSample.Views"
-		**b:Binder.Model="MainViewModel"**
-		title="{Binding Name}" height="400" width="400">
-	    <Grid>
-		<TabControl x:name="MyTabs">
+```xml
+<window x:class="WpfTabsSample.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	**xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"**
+	xmlns:views="clr-namespace:WpfTabsSample.Views"
+	**b:Binder.Model="MainViewModel"**
+	title="{Binding Name}" height="400" width="400">
+    <Grid>
+	<TabControl x:name="MyTabs">
 
-		    <TabItem header="{Binding Name}" **b:Binder.Model="Tab1ViewModel"**>
-			<views:tab1view />
-		    </TabItem>
+	    <TabItem header="{Binding Name}" **b:Binder.Model="Tab1ViewModel"**>
+		<views:tab1view />
+	    </TabItem>
 
-		    <TabItem header="{Binding Name}" b:Binder.Model="Tab2ViewModel">
-			<views:tab2view />
-		    </TabItem>
+	    <TabItem header="{Binding Name}" b:Binder.Model="Tab2ViewModel">
+		<views:tab2view />
+	    </TabItem>
 
-		</TabControl>
-	    </Grid>
-	</Window>
+	</TabControl>
+    </Grid>
+</Window>
+```
 
 Notice **xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"** and **b:Binder.Model="MainViewModel"**.
 The first sets up the xaml-namespace to the required Coligo namespace and assembly. If this were a WindowsPhome 8.1 project, the assembly
@@ -117,51 +119,53 @@ Also notice that you can mix standard xaml binding statements (**header="{Bindin
 
 **Tab1View.xaml**
 
-	<UserControl x:class="WpfTabsSample.Views.Tab1View"
-		     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-		     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-		     **xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"**
-		     mc:ignorable="d">
+```xml
+<UserControl x:class="WpfTabsSample.Views.Tab1View"
+	     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	     **xmlns:b="clr-namespace:Coligo.Platform.Binder;assembly=Coligo.Platform.WPF"**
+	     mc:ignorable="d">
 
-	    <StackPanel orientation="Vertical">
-		<TextBlock **b:Binder.Bind="$this:PostCode"** margin="5" />
-		<TextBlock **b:Binder.Bind="$this:SelectedItem"** margin="5" />
+    <StackPanel orientation="Vertical">
+	<TextBlock **b:Binder.Bind="$this:PostCode"** margin="5" />
+	<TextBlock **b:Binder.Bind="$this:SelectedItem"** margin="5" />
 
-		<TextBox **Name="PostCode"** **b:Binder.Bind="$this"** margin="5" />
+	<TextBox **Name="PostCode"** **b:Binder.Bind="$this"** margin="5" />
 
-		<TreeView height="100" **b:Binder.Bind="ItemsSource:Items;SelectedItem:SelectedTreeItem"** margin="5">
+	<TreeView height="100" **b:Binder.Bind="ItemsSource:Items;SelectedItem:SelectedTreeItem"** margin="5">
 
-		</TreeView>
+	</TreeView>
 
-		<ListView **b:Binder.Bind="$this;SelectedItem:SelectedItem;Items:Items"** margin="5" />
+	<ListView **b:Binder.Bind="$this;SelectedItem:SelectedItem;Items:Items"** margin="5" />
 
-		<CheckBox x:Name="CanCheckPostCode" Content="Can Submit Postcode" margin="5" />
+	<CheckBox x:Name="CanCheckPostCode" Content="Can Submit Postcode" margin="5" />
 
-		<Button Name="CheckPostCode" Content="Submit PostCode" b:Binder.Bind="$this" width="100" margin="5" />
+	<Button Name="CheckPostCode" Content="Submit PostCode" b:Binder.Bind="$this" width="100" margin="5" />
 
-		<Button Name="AddItemAction" b:Binder.Bind="$this" Content="Add Item" width="100" margin="5" />
+	<Button Name="AddItemAction" b:Binder.Bind="$this" Content="Add Item" width="100" margin="5" />
 
-		<Label>
-		    <Hyperlink **b:Binder.Action="Click:HelpAction"**>
-			<Label Content="Help" />
-		    </Hyperlink>
-		</Label>
-	    </StackPanel>
+	<Label>
+	    <Hyperlink **b:Binder.Action="Click:HelpAction"**>
+		<Label Content="Help" />
+	    </Hyperlink>
+	</Label>
+    </StackPanel>
 
-	</UserControl>
+</UserControl>
+```
 
 Use of **Binder**...
 
 To hook-up a ViewModel class with an entire UI Element:
-...**b:Binder.Model="name-of-your-viewmodel-class"**
+**b:Binder.Model="name-of-your-viewmodel-class"**
 
 To bind a UI Element with implicit conventions, or to bind UI Element properties to ViewModel properties:
-...**b:Binder.Bind="([$this]|[$this:vm-property-name]|[ui-element-property:vm-property]);"**
+**b:Binder.Bind="([$this]|[$this:vm-property-name]|[ui-element-property:vm-property]);"**
 
 To bind UI Element **events** to ViewModel 'Actions', or methods:
-...**b:Binder.Action="ui-event-name:vm-void-method"**
+**b:Binder.Action="ui-event-name:vm-void-method"**
 
 
 **More documentation and samples to come soon!**
